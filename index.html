@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Valentine's Day Invitation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+  body { 
+    margin: 0; 
+    font-family: Arial, sans-serif; 
+    background-color: black;
+    color: white;
+  }
+</style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="module">
+      import React, { useState } from "https://esm.sh/react@18.2.0";
+      import { createRoot } from "https://esm.sh/react-dom@18.2.0/client";
+
+      const NO_PHRASES = [
+        "No 💔",
+        "Pretty please? ",
+        "But we'd be so cute together! 💕",
+        "Are you sure???",
+        "Don't break my heart :(",
+        "What about a maybe?",
+        "Why not?",
+        "Huh???",
+        "You're supposed to say yeah!?",
+      ];
+
+      function App() {
+        const [noClicks, setNoClicks] = useState(0);
+        const [isValentine, setIsValentine] = useState(false);
+        const yesButtonSize = (noClicks * 30) + 16;
+
+        const firstImg = "https://media.tenor.com/VIChDQ6ejRQAAAAj/jumping-bear-hearts-no-png.gif";
+        const secondImg = "https://media.tenor.com/t4MA1N2YsxgAAAAi/tkthao219-bubududu.gif";
+
+        return (
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100vh",
+            textAlign: "center",
+          }}>
+            {!isValentine ? (
+              <>
+                <img src={firstImg} />
+               <h1 style={{ color: "#ff69b4" }}>
+  Will you be my babyboo Valentine?? 💘
+</h1>
+                <div>
+                  <button
+                    onClick={() => setIsValentine(true)}
+                    style={{
+                      fontSize: yesButtonSize + "px",
+                      margin: "10px",
+                      padding: "10px 20px",
+                      backgroundColor: "green",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    onClick={() => setNoClicks(n => n + 1)}
+                    style={{
+                      fontSize: "16px",
+                      margin: "10px",
+                      padding: "10px 20px",
+                      backgroundColor: "red",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {noClicks === 0
+                      ? "No"
+                      : NO_PHRASES[Math.min(noClicks - 1, NO_PHRASES.length - 1)]}
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <img src={secondImg} />
+                <div style={{
+                  fontSize: "48px",
+                  color: "pink",
+                  fontWeight: "bold",
+                }}>
+                  Yayyyy, Lets gooo!!! 💖
+                </div>
+              </>
+            )}
+          </div>
+        );
+      }
+
+      createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
+</html>
