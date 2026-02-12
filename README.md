@@ -29,7 +29,4 @@ Clicking **"No"** makes the **"Yes"** button grow bigger and bigger until thereâ
 
 No backend. No frameworks. Just vibes.
 
----
-
-## ðŸ“‚ Project Structure
 
